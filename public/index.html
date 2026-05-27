@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rove Haven - Unit Onboarding</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css" />
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Georgia',serif;background:#F9F7F3;color:#1a1a1a;min-height:100vh;padding:0 0 60px;}
+.rha{color-scheme:light;max-width:720px;margin:0 auto;padding:40px 24px 60px;}
+.rh-header{text-align:center;padding:48px 0 36px;}
+.rh-wordmark{font-family:'Georgia',serif;font-size:2.6rem;font-weight:400;letter-spacing:0.46em;text-transform:uppercase;background:linear-gradient(135deg,#D7BA8C 0%,#C9A860 40%,#BB9753 70%,#A98340 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;margin-bottom:20px;}
+.rh-rule{position:relative;height:8px;margin:0 auto 18px;max-width:480px;}
+.rh-rule::before,.rh-rule::after{content:'';position:absolute;left:0;right:0;display:block;}
+.rh-rule::before{top:0;height:1.5px;background:linear-gradient(90deg,transparent 0%,#C9A860 12%,#C9A860 88%,transparent 100%);}
+.rh-rule::after{top:5px;height:0.5px;background:linear-gradient(90deg,transparent 0%,#D7BA8C 12%,#D7BA8C 88%,transparent 100%);}
+.rh-tagline{font-family:'Georgia',serif;font-size:0.78rem;letter-spacing:0.32em;text-transform:uppercase;color:#BB9753;margin-top:4px;}
+.rh-progress-wrap{margin:8px 0 32px;display:flex;align-items:center;gap:14px;}
+.rh-progress-bar-bg{flex:1;height:2px;background:#E8E0D0;border-radius:1px;overflow:hidden;}
+#prog-bar{height:2px;width:0%;background:linear-gradient(90deg,#D7BA8C,#C9A860,#BB9753);border-radius:1px;transition:width 0.4s ease;}
+#prog-text{font-size:0.72rem;color:#BB9753;letter-spacing:0.08em;min-width:32px;text-align:right;font-family:Georgia,serif;}
+.rh-unit-row{display:flex;align-items:center;gap:12px;margin-bottom:30px;background:#fff;border:1.5px solid #D7BA8C;border-radius:6px;padding:14px 18px;}
+.rh-unit-label{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:#BB9753;white-space:nowrap;font-family:Georgia,serif;}
+#unit-number{flex:1;border:none;outline:none;font-family:Georgia,serif;font-size:1rem;color:#1a1a1a;background:transparent;color-scheme:light;}
+#unit-number::placeholder{color:#C9B896;}
+.rh-section{background:#fff;border-radius:8px;border-top:1.5px solid #BB9753;box-shadow:0 2px 12px rgba(187,151,83,0.07);margin-bottom:20px;overflow:hidden;}
+.rh-section-header{display:flex;align-items:center;gap:10px;padding:16px 20px 12px;border-bottom:1px solid #F0E8D8;}
+.rh-icon{font-size:1.15rem;background:linear-gradient(135deg,#D7BA8C,#BB9753);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.rh-section-header span{font-family:Georgia,serif;font-size:0.72rem;letter-spacing:0.26em;text-transform:uppercase;color:#9B7D42;}
+.rh-field-row{padding:10px 20px;border-bottom:1px solid #F5F0E8;}
+.rh-label{display:block;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:#BB9753;margin-bottom:5px;font-family:Georgia,serif;}
+.rh-input{width:100%;border:1.5px solid #D7BA8C;border-radius:4px;padding:9px 12px;font-family:Georgia,serif;font-size:0.93rem;color:#1a1a1a;background:#fff;outline:none;transition:border-color 0.2s;color-scheme:light;}
+.rh-input:focus{border-color:#BB9753;}
+.rh-input::placeholder{color:#C9B896;}
+.rh-cb-row{padding:10px 20px;border-bottom:1px solid #F5F0E8;}
+.rh-cb-row:last-child{border-bottom:none;}
+.rh-cb-wrap{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.cb-input{position:absolute;opacity:0;width:0;height:0;}
+.cb-box{display:inline-block;width:18px;height:18px;min-width:18px;border:1.5px solid #D7BA8C;border-radius:3px;background:#fff;position:relative;transition:all 0.18s;color-scheme:light;}
+.cb-input:checked + .cb-box{background:linear-gradient(135deg,#D7BA8C 0%,#BB9753 100%);border-color:#BB9753;}
+.cb-input:checked + .cb-box::after{content:'\2713';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:0.72rem;font-weight:700;}
+.rh-cb-label{font-family:Georgia,serif;font-size:0.93rem;color:#2a2a2a;line-height:1.4;}
+.rh-submit-wrap{margin-top:32px;text-align:center;}
+#submit-btn{position:relative;display:inline-block;padding:15px 52px;font-family:Georgia,serif;font-size:0.82rem;letter-spacing:0.28em;text-transform:uppercase;color:#fff;border:none;border-radius:5px;cursor:pointer;overflow:hidden;background:linear-gradient(135deg,#E4CFA0 0%,#D7BA8C 22%,#C9A860 50%,#BB9753 76%,#A98340 100%);box-shadow:0 4px 18px rgba(187,151,83,0.35);transition:box-shadow 0.2s,transform 0.1s;}
+#submit-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0) 60%);pointer-events:none;}
+#submit-btn:hover{box-shadow:0 6px 24px rgba(187,151,83,0.5);transform:translateY(-1px);}
+#submit-btn:active{transform:translateY(0);}
+#submit-btn:disabled{opacity:0.7;cursor:not-allowed;}
+#success-overlay{display:none;position:fixed;inset:0;background:rgba(249,247,243,0.96);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
+.rh-success-mark{font-size:3.2rem;background:linear-gradient(135deg,#D7BA8C,#BB9753);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.rh-success-title{font-family:Georgia,serif;font-size:1.4rem;letter-spacing:0.3em;text-transform:uppercase;background:linear-gradient(135deg,#D7BA8C,#BB9753);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.rh-success-sub{font-family:Georgia,serif;font-size:0.82rem;color:#9B7D42;letter-spacing:0.18em;text-transform:uppercase;}
+.rh-success-unit{color:#BB9753;}
+#main-content .rh-field-row:last-child,.rh-section .rh-cb-row:last-child{border-bottom:none;}
+</style>
+</head>
+<body>
+<div class="rha">
+  <div class="rh-header">
+    <div class="rh-wordmark">Rove Haven</div>
+    <div class="rh-rule"></div>
+    <div class="rh-tagline">Love Rove &middot; Discover Haven</div>
+  </div>
+  <div class="rh-progress-wrap">
+    <div class="rh-progress-bar-bg"><div id="prog-bar"></div></div>
+    <span id="prog-text">0%</span>
+  </div>
+  <div class="rh-unit-row">
+    <span class="rh-unit-label">Unit #</span>
+    <input id="unit-number" type="text" placeholder="Enter unit number" autocomplete="off" />
+  </div>
+  <div id="main-content"></div>
+  <div class="rh-submit-wrap">
+    <button id="submit-btn" onclick="submitUnit()">Submit Unit Info</button>
+  </div>
+</div>
+<div id="success-overlay">
+  <div class="rh-success-mark">&#10003;</div>
+  <div class="rh-success-title">Submitted</div>
+  <div class="rh-success-sub">Unit <span class="rh-success-unit"></span> has been saved to Notion</div>
+</div>
+<script>var cbState={};var fieldMeta={};function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}function getSectionIcon(n){var l=n.toLowerCase();if(l.indexOf('detail')>=0||l.indexOf('unit')>=0)return 'ti-building';if(l.indexOf('key')>=0||l.indexOf('access')>=0)return 'ti-key';if(l.indexOf('util')>=0||l.indexOf('internet')>=0)return 'ti-plug';if(l.indexOf('photo')>=0||l.indexOf('listing')>=0)return 'ti-camera';if(l.indexOf('legal')>=0||l.indexOf('permit')>=0)return 'ti-certificate';return 'ti-list';}function updateProgress(){var boxes=document.querySelectorAll('.cb-input');var total=boxes.length;if(total===0)return;var checked=0;boxes.forEach(function(b){if(b.checked)checked++;});var pct=Math.round((checked/total)*100);document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-text').textContent=pct+'%';}function renderPage(data){var main=document.getElementById('main-content');if(!main)return;if(!data||!data.sections||!data.sections.length){main.innerHTML='<p style="color:#9B7D42;text-align:center;padding:40px;font-family:Georgia,serif;">No content found in Notion page.</p>';return;}var html='';data.sections.forEach(function(sec){var icon=getSectionIcon(sec.title);html+='<div class="rh-section"><div class="rh-section-header"><i class="ti '+esc(icon)+' rh-icon"></i><span>'+esc(sec.title)+'</span></div>';if(sec.fields&&sec.fields.length){sec.fields.forEach(function(f){fieldMeta[f.fieldId]={label:f.label};html+='<div class="rh-field-row"><label class="rh-label">'+esc(f.label)+'</label><input class="rh-input" type="text" data-field-id="'+esc(f.fieldId)+'" placeholder="'+esc(f.label)+'" value="'+esc(f.value||'')+'" autocomplete="off" /></div>';});}if(sec.items&&sec.items.length){sec.items.forEach(function(item){cbState[item.id]=item.checked;html+='<div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-id="'+esc(item.id)+'" '+(item.checked?'checked':'')+' /><span class="cb-box"></span><span class="rh-cb-label">'+esc(item.text)+'</span></label></div>';});}html+='</div>';});main.innerHTML=html;document.querySelectorAll('.cb-input').forEach(function(el){el.addEventListener('change',function(){var id=this.getAttribute('data-id');cbState[id]=this.checked;updateProgress();fetch('/api/checkbox',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({blockId:id,checked:this.checked})}).catch(function(){});});});document.querySelectorAll('.rh-input').forEach(function(el){el.addEventListener('blur',function(){var fid=this.getAttribute('data-field-id');var val=this.value;fetch('/api/field',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({blockId:fid,value:val})}).catch(function(){});});});updateProgress();}function resetForm(unitNum){document.querySelectorAll('.cb-input').forEach(function(el){el.checked=false;cbState[el.getAttribute('data-id')]=false;});document.querySelectorAll('.rh-input').forEach(function(el){el.value='';});document.getElementById('unit-number').value='';updateProgress();var ov=document.getElementById('success-overlay');if(ov){ov.style.display='flex';var sp=ov.querySelector('.rh-success-unit');if(sp)sp.textContent=unitNum;setTimeout(function(){ov.style.display='none';},4000);}}function submitUnit(){var unitNum=document.getElementById('unit-number').value.trim();if(!unitNum){alert('Please enter a unit number.');return;}var fields={};document.querySelectorAll('.rh-input').forEach(function(el){var fid=el.getAttribute('data-field-id');if(fid)fields[fid]=el.value;});var btn=document.getElementById('submit-btn');if(btn){btn.disabled=true;btn.textContent='Submittingâ¦';}fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({unitNumber:unitNum,fields:fields,checkboxes:cbState})}).then(function(r){return r.json();}).then(function(){if(btn){btn.disabled=false;btn.textContent='Submit Unit Info';}resetForm(unitNum);}).catch(function(){if(btn){btn.disabled=false;btn.textContent='Submit Unit Info';}alert('Submission failed. Please try again.');});}function load(){var main=document.getElementById('main-content');if(main)main.innerHTML='<p style="color:#C9A860;text-align:center;padding:48px;font-family:Georgia,serif;letter-spacing:0.12em;">Loading from Notionâ¦</p>';fetch('/api/page').then(function(r){return r.json();}).then(function(data){renderPage(data);}).catch(function(){var main=document.getElementById('main-content');if(main)main.innerHTML='<p style="color:#c0392b;text-align:center;padding:40px;font-family:Georgia,serif;">Error loading. <a href="#" onclick="load();return false;" style="color:#BB9753;">Retry</a></p>';});}document.addEventListener('DOMContentLoaded',load);</script>
+</body>
+</html>
