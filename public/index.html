@@ -1,85 +1,623 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rove Haven - Unit Onboarding</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.0.0/tabler-icons.min.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rove Haven — Unit Onboarding</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Georgia',serif;background:#F9F7F3;color:#1a1a1a;min-height:100vh;padding:0 0 60px;}
-.rha{color-scheme:light;max-width:720px;margin:0 auto;padding:40px 24px 60px;}
-.rh-header{text-align:center;padding:48px 0 36px;}
-.rh-wordmark{font-family:'Georgia',serif;font-size:2.6rem;font-weight:400;letter-spacing:0.46em;text-transform:uppercase;background:linear-gradient(135deg,#D7BA8C 0%,#C9A860 40%,#BB9753 70%,#A98340 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;margin-bottom:20px;}
-.rh-rule{position:relative;height:8px;margin:0 auto 18px;max-width:480px;}
-.rh-rule::before,.rh-rule::after{content:'';position:absolute;left:0;right:0;display:block;}
-.rh-rule::before{top:0;height:1.5px;background:linear-gradient(90deg,transparent 0%,#C9A860 12%,#C9A860 88%,transparent 100%);}
-.rh-rule::after{top:5px;height:0.5px;background:linear-gradient(90deg,transparent 0%,#D7BA8C 12%,#D7BA8C 88%,transparent 100%);}
-.rh-tagline{font-family:'Georgia',serif;font-size:0.78rem;letter-spacing:0.32em;text-transform:uppercase;color:#BB9753;margin-top:4px;}
-.rh-progress-wrap{margin:8px 0 32px;display:flex;align-items:center;gap:14px;}
-.rh-progress-bar-bg{flex:1;height:2px;background:#E8E0D0;border-radius:1px;overflow:hidden;}
-#prog-bar{height:2px;width:0%;background:linear-gradient(90deg,#D7BA8C,#C9A860,#BB9753);border-radius:1px;transition:width 0.4s ease;}
-#prog-text{font-size:0.72rem;color:#BB9753;letter-spacing:0.08em;min-width:32px;text-align:right;font-family:Georgia,serif;}
-.rh-unit-row{display:flex;align-items:center;gap:12px;margin-bottom:30px;background:#fff;border:1.5px solid #D7BA8C;border-radius:6px;padding:14px 18px;}
-.rh-unit-label{font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;color:#BB9753;white-space:nowrap;font-family:Georgia,serif;}
-#unit-number{flex:1;border:none;outline:none;font-family:Georgia,serif;font-size:1rem;color:#1a1a1a;background:transparent;color-scheme:light;}
-#unit-number::placeholder{color:#C9B896;}
-.rh-section{background:#fff;border-radius:8px;border-top:1.5px solid #BB9753;box-shadow:0 2px 12px rgba(187,151,83,0.07);margin-bottom:20px;overflow:hidden;}
-.rh-section-header{display:flex;align-items:center;gap:10px;padding:16px 20px 12px;border-bottom:1px solid #F0E8D8;}
-.rh-icon{font-size:1.15rem;background:linear-gradient(135deg,#D7BA8C,#BB9753);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.rh-section-header span{font-family:Georgia,serif;font-size:0.72rem;letter-spacing:0.26em;text-transform:uppercase;color:#9B7D42;}
-.rh-field-row{padding:10px 20px;border-bottom:1px solid #F5F0E8;}
-.rh-label{display:block;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:#BB9753;margin-bottom:5px;font-family:Georgia,serif;}
-.rh-input{width:100%;border:1.5px solid #D7BA8C;border-radius:4px;padding:9px 12px;font-family:Georgia,serif;font-size:0.93rem;color:#1a1a1a;background:#fff;outline:none;transition:border-color 0.2s;color-scheme:light;}
-.rh-input:focus{border-color:#BB9753;}
-.rh-input::placeholder{color:#C9B896;}
-.rh-cb-row{padding:10px 20px;border-bottom:1px solid #F5F0E8;}
-.rh-cb-row:last-child{border-bottom:none;}
-.rh-cb-wrap{display:flex;align-items:center;gap:10px;cursor:pointer;}
-.cb-input{position:absolute;opacity:0;width:0;height:0;}
-.cb-box{display:inline-block;width:18px;height:18px;min-width:18px;border:1.5px solid #D7BA8C;border-radius:3px;background:#fff;position:relative;transition:all 0.18s;color-scheme:light;}
-.cb-input:checked + .cb-box{background:linear-gradient(135deg,#D7BA8C 0%,#BB9753 100%);border-color:#BB9753;}
-.cb-input:checked + .cb-box::after{content:'\2713';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:0.72rem;font-weight:700;}
-.rh-cb-label{font-family:Georgia,serif;font-size:0.93rem;color:#2a2a2a;line-height:1.4;}
-.rh-submit-wrap{margin-top:32px;text-align:center;}
-#submit-btn{position:relative;display:inline-block;padding:15px 52px;font-family:Georgia,serif;font-size:0.82rem;letter-spacing:0.28em;text-transform:uppercase;color:#fff;border:none;border-radius:5px;cursor:pointer;overflow:hidden;background:linear-gradient(135deg,#E4CFA0 0%,#D7BA8C 22%,#C9A860 50%,#BB9753 76%,#A98340 100%);box-shadow:0 4px 18px rgba(187,151,83,0.35);transition:box-shadow 0.2s,transform 0.1s;}
-#submit-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.18) 0%,rgba(255,255,255,0) 60%);pointer-events:none;}
-#submit-btn:hover{box-shadow:0 6px 24px rgba(187,151,83,0.5);transform:translateY(-1px);}
-#submit-btn:active{transform:translateY(0);}
-#submit-btn:disabled{opacity:0.7;cursor:not-allowed;}
-#success-overlay{display:none;position:fixed;inset:0;background:rgba(249,247,243,0.96);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:16px;}
-.rh-success-mark{font-size:3.2rem;background:linear-gradient(135deg,#D7BA8C,#BB9753);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.rh-success-title{font-family:Georgia,serif;font-size:1.4rem;letter-spacing:0.3em;text-transform:uppercase;background:linear-gradient(135deg,#D7BA8C,#BB9753);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.rh-success-sub{font-family:Georgia,serif;font-size:0.82rem;color:#9B7D42;letter-spacing:0.18em;text-transform:uppercase;}
-.rh-success-unit{color:#BB9753;}
-#main-content .rh-field-row:last-child,.rh-section .rh-cb-row:last-child{border-bottom:none;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Georgia',serif;background:#F9F7F3;color:#1a1a1a;min-height:100vh;padding:0 0 80px}
+.wrap{max-width:760px;margin:0 auto;padding:40px 20px 80px}
+
+/* ── HEADER ── */
+.rh-header{text-align:center;padding:48px 0 36px}
+.rh-wordmark{font-family:'Georgia',serif;font-size:2.6rem;font-weight:400;letter-spacing:.46em;text-transform:uppercase;background:linear-gradient(135deg,#D7BA8C 0%,#C9A860 40%,#BB9753 70%,#A98340 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.2;margin-bottom:20px}
+.rh-rule{position:relative;height:8px;margin:0 auto 18px;max-width:480px}
+.rh-rule::before,.rh-rule::after{content:'';position:absolute;left:0;right:0;display:block}
+.rh-rule::before{top:0;height:1.5px;background:linear-gradient(90deg,transparent 0%,#C9A860 12%,#C9A860 88%,transparent 100%)}
+.rh-rule::after{top:5px;height:.5px;background:linear-gradient(90deg,transparent 0%,#D7BA8C 12%,#D7BA8C 88%,transparent 100%)}
+.rh-tagline{font-family:'Georgia',serif;font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;color:#BB9753;margin-top:4px}
+
+/* ── PROGRESS ── */
+.rh-progress-wrap{margin:8px 0 10px;display:flex;align-items:center;gap:14px}
+.rh-progress-bar-bg{flex:1;height:2px;background:#E8E0D0;border-radius:1px;overflow:hidden}
+#prog-bar{height:2px;width:0%;background:linear-gradient(90deg,#D7BA8C,#C9A860,#BB9753);border-radius:1px;transition:width .4s ease}
+#prog-text{font-size:.72rem;color:#BB9753;letter-spacing:.08em;min-width:32px;text-align:right;font-family:Georgia,serif}
+.prog-stats{display:flex;gap:18px;margin-bottom:22px;flex-wrap:wrap}
+.prog-stat{font-size:.7rem;color:#9B7D42;letter-spacing:.06em}
+.prog-stat strong{color:#6B5A2A}
+
+/* ── UNIT ROW ── */
+.rh-unit-row{display:flex;align-items:center;gap:12px;margin-bottom:24px;background:#fff;border:1.5px solid #D7BA8C;border-radius:6px;padding:14px 18px}
+.rh-unit-label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#BB9753;white-space:nowrap;font-family:Georgia,serif}
+#unit-number{flex:1;border:none;outline:none;font-family:Georgia,serif;font-size:1rem;color:#1a1a1a;background:transparent}
+#unit-number::placeholder{color:#C9B896}
+
+/* ── SECTION CARD ── */
+.rh-section{background:#fff;border-radius:8px;border-top:1.5px solid #BB9753;box-shadow:0 2px 12px rgba(187,151,83,.07);margin-bottom:18px;overflow:hidden}
+.rh-sec-hdr{display:flex;align-items:center;justify-content:space-between;padding:15px 20px 13px;cursor:pointer;user-select:none;transition:background .12s;gap:10px}
+.rh-sec-hdr:hover{background:#FDFBF7}
+.rh-sec-hdr-l{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.sec-ico{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,#F5EDE0,#EDD9B8);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.rh-sec-title{font-family:Georgia,serif;font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:#9B7D42}
+.rh-sec-sub{font-size:.67rem;color:#B8A07A;letter-spacing:.05em;margin-top:2px}
+.rh-sec-hdr-r{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.sec-cnt{font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:99px;border:1.5px solid #E8E0D0;color:#9B7D42;background:#F9F7F3;letter-spacing:.04em}
+.sec-cnt.done{color:#2E7D52;background:#EAF5EE;border-color:#9FD4B8}
+.chev{color:#C9A860;font-size:9px;transition:transform .2s}
+.rh-section.closed .chev{transform:rotate(-90deg)}
+.rh-section.closed .sec-body{display:none}
+.sec-mbar{height:2px;background:#F0E8D8}
+.sec-mfill{height:100%;background:linear-gradient(90deg,#D7BA8C,#BB9753);transition:width .3s ease}
+.sec-body{border-top:1px solid #F0E8D8}
+
+/* ── GROUP LABEL ── */
+.grp-lbl{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#BB9753;padding:10px 20px 4px;border-top:1px solid #F5F0E8}
+.grp-lbl:first-child{border-top:none}
+
+/* ── CHECKBOX ROW ── */
+.rh-cb-row{padding:9px 20px;border-bottom:1px solid #F5F0E8}
+.rh-cb-row:last-child{border-bottom:none}
+.rh-cb-wrap{display:flex;align-items:center;gap:10px;cursor:pointer}
+.cb-input{position:absolute;opacity:0;width:0;height:0}
+.cb-box{display:inline-block;width:17px;height:17px;min-width:17px;border:1.5px solid #D7BA8C;border-radius:3px;background:#fff;position:relative;transition:all .18s}
+.cb-input:checked+.cb-box{background:linear-gradient(135deg,#D7BA8C 0%,#BB9753 100%);border-color:#BB9753}
+.cb-input:checked+.cb-box::after{content:'\2713';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;font-size:.68rem;font-weight:700}
+.rh-cb-label{font-family:Georgia,serif;font-size:.91rem;color:#2a2a2a;line-height:1.4}
+
+/* ── FORM GRID ── */
+.fgrid{display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:560px){.fgrid{grid-template-columns:1fr}}
+.ff{padding:13px 20px;border-right:1px solid #F0E8D8;border-bottom:1px solid #F0E8D8}
+.ff:nth-child(even){border-right:none}
+.ff.full{grid-column:1/-1;border-right:none}
+.ff label{display:block;font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#BB9753;margin-bottom:6px;font-family:Georgia,serif}
+.ff input,.ff textarea,.ff select{width:100%;border:1.5px solid #E8E0D0;border-radius:5px;padding:8px 11px;font-size:.9rem;font-family:Georgia,serif;color:#1a1a1a;background:#FDFCFA;outline:none;transition:border-color .15s,box-shadow .15s;resize:vertical}
+.ff input:focus,.ff textarea:focus{border-color:#BB9753;box-shadow:0 0 0 3px rgba(187,151,83,.1)}
+.ff input::placeholder,.ff textarea::placeholder{color:#C9B896}
+.rg{display:flex;gap:14px;flex-wrap:wrap;padding-top:2px}
+.rg label{display:flex;align-items:center;gap:5px;font-size:.88rem;font-weight:400;color:#2a2a2a;text-transform:none;letter-spacing:0;cursor:pointer;margin-bottom:0}
+.rg input[type=radio]{accent-color:#BB9753;width:14px;height:14px}
+
+/* ── DOCUMENT TRACKER ── */
+.doc-wrap{padding:6px 20px 14px}
+.doc-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F0E8D8}
+.doc-item:last-child{border-bottom:none}
+.doc-ico{font-size:17px;width:24px;text-align:center}
+.doc-name{flex:1;font-size:.88rem;font-family:Georgia,serif;color:#2a2a2a}
+.dtag{font-size:.63rem;font-weight:700;padding:3px 11px;border-radius:99px;border:1.5px solid;cursor:pointer;transition:all .15s;text-transform:uppercase;letter-spacing:.3px}
+.dtag.pending{background:#FFFBF0;color:#A07030;border-color:#E6C87A}
+.dtag.uploaded{background:#EAF5EE;color:#2E7D52;border-color:#9FD4B8}
+.doc-drive{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-family:Georgia,serif;letter-spacing:.08em;color:#BB9753;text-decoration:none;padding:4px 20px 14px}
+.doc-drive:hover{color:#A98340}
+
+/* ── INSPECTION ── */
+.insp-body{padding:18px 20px}
+.insp-lbl{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#BB9753;margin-bottom:12px;font-family:Georgia,serif}
+.insp-choices{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.ibtn{padding:9px 26px;border-radius:6px;font-size:.82rem;font-weight:700;font-family:Georgia,serif;border:2px solid #E8E0D0;background:#F9F7F3;color:#9B7D42;cursor:pointer;transition:all .15s;letter-spacing:.05em}
+.ibtn:hover{border-color:#BB9753;color:#BB9753}
+.ibtn.sel-y{border-color:#2E7D52;background:#EAF5EE;color:#2E7D52}
+.ibtn.sel-n{border-color:#C0392B;background:#FDEDEC;color:#C0392B}
+.appr-row{display:flex;align-items:center;gap:12px}
+.appr-label{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#BB9753;white-space:nowrap;font-family:Georgia,serif}
+.appr-input{flex:1;border:1.5px solid #E8E0D0;border-radius:5px;padding:8px 11px;font-size:.9rem;font-family:Georgia,serif;background:#FDFCFA;color:#1a1a1a;outline:none}
+.appr-input:focus{border-color:#BB9753}
+.appr-input::placeholder{color:#C9B896}
+
+/* ── SUBMIT ── */
+.rh-submit-wrap{margin-top:32px;text-align:center}
+#submit-btn{position:relative;display:inline-block;padding:15px 52px;font-family:Georgia,serif;font-size:.82rem;letter-spacing:.28em;text-transform:uppercase;color:#fff;border:none;border-radius:5px;cursor:pointer;overflow:hidden;background:linear-gradient(135deg,#E4CFA0 0%,#D7BA8C 22%,#C9A860 50%,#BB9753 76%,#A98340 100%);box-shadow:0 4px 18px rgba(187,151,83,.35);transition:box-shadow .2s,transform .1s}
+#submit-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,0) 60%);pointer-events:none}
+#submit-btn:hover{box-shadow:0 6px 24px rgba(187,151,83,.5);transform:translateY(-1px)}
+#submit-btn:active{transform:translateY(0)}
+#submit-btn:disabled{opacity:.7;cursor:not-allowed}
+
+/* ── SUCCESS ── */
+#success-overlay{display:none;position:fixed;inset:0;background:rgba(249,247,243,.96);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:16px}
+.rh-success-mark{font-size:3.2rem;background:linear-gradient(135deg,#D7BA8C,#BB9753);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.rh-success-title{font-family:Georgia,serif;font-size:1.4rem;letter-spacing:.3em;text-transform:uppercase;background:linear-gradient(135deg,#D7BA8C,#BB9753);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.rh-success-sub{font-family:Georgia,serif;font-size:.82rem;color:#9B7D42;letter-spacing:.18em;text-transform:uppercase}
+.rh-success-unit{color:#BB9753}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:#1a1a1a;color:#F9F7F3;padding:11px 22px;border-radius:6px;font-size:.8rem;font-family:Georgia,serif;letter-spacing:.08em;box-shadow:0 6px 22px rgba(0,0,0,.22);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:1000;pointer-events:none}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+@media print{body{background:#fff;padding:0}.rh-submit-wrap,.toast{display:none}.rh-section.closed .sec-body{display:block!important}}
 </style>
 </head>
 <body>
-<div class="rha">
-  <div class="rh-header">
-    <div class="rh-wordmark">Rove Haven</div>
-    <div class="rh-rule"></div>
-    <div class="rh-tagline">Love Rove &middot; Discover Haven</div>
+<div class="wrap">
+
+<!-- ═══════════════ HEADER ═══════════════ -->
+<div class="rh-header">
+  <div class="rh-wordmark">Rove Haven</div>
+  <div class="rh-rule"></div>
+  <div class="rh-tagline">Love Rove &middot; Discover Haven</div>
+</div>
+
+<!-- PROGRESS -->
+<div class="rh-progress-wrap">
+  <div class="rh-progress-bar-bg"><div id="prog-bar"></div></div>
+  <span id="prog-text">0%</span>
+</div>
+<div class="prog-stats">
+  <div class="prog-stat"><strong id="dn">0</strong> completed</div>
+  <div class="prog-stat"><strong id="tt">0</strong> total tasks</div>
+  <div class="prog-stat"><strong id="rm">0</strong> remaining</div>
+</div>
+
+<!-- UNIT # -->
+<div class="rh-unit-row">
+  <span class="rh-unit-label">Unit #</span>
+  <input id="unit-number" type="text" placeholder="Enter unit number" autocomplete="off"/>
+</div>
+
+<!-- ═══════════════ S1: REGISTRATION & COMPLIANCE ═══════════════ -->
+<div class="rh-section" id="s1">
+  <div class="rh-sec-hdr" onclick="togSec('s1')">
+    <div class="rh-sec-hdr-l">
+      <div class="sec-ico">📋</div>
+      <div>
+        <div class="rh-sec-title">Registration &amp; Compliance</div>
+        <div class="rh-sec-sub">7 days unfurnished · 3 days furnished</div>
+      </div>
+    </div>
+    <div class="rh-sec-hdr-r">
+      <span class="sec-cnt" id="c1">0/6</span>
+      <span class="chev">▼</span>
+    </div>
   </div>
-  <div class="rh-progress-wrap">
-    <div class="rh-progress-bar-bg"><div id="prog-bar"></div></div>
-    <span id="prog-text">0%</span>
-  </div>
-  <div class="rh-unit-row">
-    <span class="rh-unit-label">Unit #</span>
-    <input id="unit-number" type="text" placeholder="Enter unit number" autocomplete="off" />
-  </div>
-  <div id="main-content"></div>
-  <div class="rh-submit-wrap">
-    <button id="submit-btn" onclick="submitUnit()">Submit Unit Info</button>
+  <div class="sec-mbar"><div class="sec-mfill" id="b1" style="width:0%"></div></div>
+  <div class="sec-body">
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="1"/><span class="cb-box"></span><span class="rh-cb-label">DTCM Registration</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="1"/><span class="cb-box"></span><span class="rh-cb-label">Furnishing per DTCM Standards</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="1"/><span class="cb-box"></span><span class="rh-cb-label">DEWA Setup Complete</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="1"/><span class="cb-box"></span><span class="rh-cb-label">DU (Telecom) Setup Complete</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="1"/><span class="cb-box"></span><span class="rh-cb-label">Property Insurance Active</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="1"/><span class="cb-box"></span><span class="rh-cb-label">Building NOC Obtained</span></label></div>
   </div>
 </div>
+
+<!-- ═══════════════ S2: UNIT DETAILS (FORM) ═══════════════ -->
+<div class="rh-section" id="s2">
+  <div class="rh-sec-hdr" onclick="togSec('s2')">
+    <div class="rh-sec-hdr-l">
+      <div class="sec-ico">🏠</div>
+      <div>
+        <div class="rh-sec-title">Unit Details</div>
+        <div class="rh-sec-sub">Fill in all details before going live</div>
+      </div>
+    </div>
+    <div class="rh-sec-hdr-r"><span class="chev">▼</span></div>
+  </div>
+  <div class="sec-body">
+    <div class="fgrid">
+      <div class="ff full"><label>Management Email Address</label><input type="email" id="f-mgmt-email" placeholder="e.g. building@management.ae"/></div>
+      <div class="ff full"><label>Building Registration Process / Notes</label><textarea id="f-bld-notes" rows="2" placeholder="Describe the building registration steps..."></textarea></div>
+      <div class="ff"><label>Building Name</label><input type="text" id="f-bld-name" placeholder="e.g. Marina Heights Tower"/></div>
+      <div class="ff"><label>Unit Number / Floor</label><input type="text" id="f-unit-floor" placeholder="e.g. Apt 1204, Floor 12"/></div>
+      <div class="ff full"><label>Address</label><input type="text" id="f-address" placeholder="Full street address"/></div>
+      <div class="ff full"><label>Location Link (Google Maps)</label><input type="url" id="f-maps" placeholder="https://maps.google.com/..."/></div>
+      <div class="ff"><label>Bedrooms</label><input type="number" id="f-beds" placeholder="e.g. 2" min="0"/></div>
+      <div class="ff"><label>Bathrooms</label><input type="number" id="f-baths" placeholder="e.g. 2" min="0"/></div>
+      <div class="ff"><label>Unit Size (SQM)</label><input type="number" id="f-sqm" placeholder="e.g. 85" min="0"/></div>
+      <div class="ff"><label>Bed Size(s)</label><input type="text" id="f-bed-size" placeholder="e.g. 1× King, 1× Queen"/></div>
+      <div class="ff"><label>Sofa Bed?</label>
+        <div class="rg">
+          <label><input type="radio" name="sofabed" value="Yes"/> Yes</label>
+          <label><input type="radio" name="sofabed" value="No"/> No</label>
+        </div>
+      </div>
+      <div class="ff"><label>Balcony / Terrace?</label>
+        <div class="rg">
+          <label><input type="radio" name="balcony" value="Yes"/> Yes</label>
+          <label><input type="radio" name="balcony" value="No"/> No</label>
+        </div>
+      </div>
+      <div class="ff"><label>Kitchenware Quantity</label><input type="text" id="f-kitchenware" placeholder="e.g. 4 plates, 4 forks..."/></div>
+      <div class="ff"><label>Max Guests</label><input type="number" id="f-guests" placeholder="e.g. 4" min="1"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S3: KEY & ACCESS (FORM) ═══════════════ -->
+<div class="rh-section" id="s3">
+  <div class="rh-sec-hdr" onclick="togSec('s3')">
+    <div class="rh-sec-hdr-l">
+      <div class="sec-ico">🔑</div>
+      <div>
+        <div class="rh-sec-title">Key &amp; Access</div>
+        <div class="rh-sec-sub">Codes, keys, and access card details</div>
+      </div>
+    </div>
+    <div class="rh-sec-hdr-r"><span class="chev">▼</span></div>
+  </div>
+  <div class="sec-body">
+    <div class="fgrid">
+      <div class="ff"><label>Smart Lock?</label>
+        <div class="rg">
+          <label><input type="radio" name="smartlock" value="Yes"/> Yes</label>
+          <label><input type="radio" name="smartlock" value="No"/> No</label>
+        </div>
+      </div>
+      <div class="ff"><label>Smart Lock Code</label><input type="text" id="f-lock-code" placeholder="Access code"/></div>
+      <div class="ff"><label>Number of Keys</label><input type="number" id="f-keys" placeholder="e.g. 2" min="0"/></div>
+      <div class="ff"><label>Access Cards (Quantity)</label><input type="number" id="f-cards" placeholder="e.g. 2" min="0"/></div>
+      <div class="ff"><label>Building Entry Code</label><input type="text" id="f-entry-code" placeholder="Lobby / gate code"/></div>
+      <div class="ff"><label>Pool / Gym Access Code</label><input type="text" id="f-pool-code" placeholder="If applicable"/></div>
+      <div class="ff"><label>Parking Number</label><input type="text" id="f-parking" placeholder="e.g. B2-045"/></div>
+      <div class="ff"><label>Parking Floor / Location</label><input type="text" id="f-parking-level" placeholder="e.g. Basement Level 2"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S4: FURNISHING CHECKLIST ═══════════════ -->
+<div class="rh-section" id="s4">
+  <div class="rh-sec-hdr" onclick="togSec('s4')">
+    <div class="rh-sec-hdr-l">
+      <div class="sec-ico">🛋️</div>
+      <div>
+        <div class="rh-sec-title">Furnishing Checklist</div>
+        <div class="rh-sec-sub">All items must meet DTCM standards</div>
+      </div>
+    </div>
+    <div class="rh-sec-hdr-r">
+      <span class="sec-cnt" id="c4">0/25</span>
+      <span class="chev">▼</span>
+    </div>
+  </div>
+  <div class="sec-mbar"><div class="sec-mfill" id="b4" style="width:0%"></div></div>
+  <div class="sec-body">
+    <div class="grp-lbl">Living &amp; Dining</div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Sofa</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Dining Table</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Dining Chairs</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Coffee Table</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Television</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Curtains / Blinds</span></label></div>
+
+    <div class="grp-lbl">Bedroom</div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Beds with Quality Mattresses</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Bedside Tables</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Bedside Lamps</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Wardrobe</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Blackout Curtains</span></label></div>
+
+    <div class="grp-lbl">Kitchen</div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Refrigerator</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Stove / Oven</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Microwave</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Cookware (pots &amp; pans)</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Cutlery &amp; Crockery</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Kitchen Utensils</span></label></div>
+
+    <div class="grp-lbl">Bathroom</div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Shower / Bathtub Functional</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Mirror</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Waste Bin</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Towel Rail / Hooks</span></label></div>
+
+    <div class="grp-lbl">Essentials</div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Wi-Fi Router &amp; Internet</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Air Conditioning (AC) Working</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Iron &amp; Ironing Board</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="4"/><span class="cb-box"></span><span class="rh-cb-label">Fire Safety Equipment</span></label></div>
+  </div>
+</div>
+
+<!-- ═══════════════ S5: UTILITIES & INTERNET (FORM) ═══════════════ -->
+<div class="rh-section" id="s5">
+  <div class="rh-sec-hdr" onclick="togSec('s5')">
+    <div class="rh-sec-hdr-l">
+      <div class="sec-ico">📡</div>
+      <div>
+        <div class="rh-sec-title">Utilities &amp; Internet</div>
+        <div class="rh-sec-sub">Account credentials and due dates</div>
+      </div>
+    </div>
+    <div class="rh-sec-hdr-r"><span class="chev">▼</span></div>
+  </div>
+  <div class="sec-body">
+    <div class="fgrid">
+      <div class="ff"><label>Wi-Fi Name (SSID)</label><input type="text" id="f-wifi-name" placeholder="Network name"/></div>
+      <div class="ff"><label>Wi-Fi Password</label><input type="text" id="f-wifi-pass" placeholder="Password"/></div>
+      <div class="ff"><label>DEWA — Account Number</label><input type="text" id="f-dewa-acc" placeholder="Account number"/></div>
+      <div class="ff"></div>
+      <div class="ff"><label>DEWA — Username</label><input type="text" id="f-dewa-user" placeholder="Username"/></div>
+      <div class="ff"><label>DEWA — Password</label><input type="text" id="f-dewa-pass" placeholder="Password"/></div>
+      <div class="ff"><label>DU — Account Number</label><input type="text" id="f-du-acc" placeholder="Account number"/></div>
+      <div class="ff"><label>DU — Due Date</label><input type="date" id="f-du-due"/></div>
+      <div class="ff"><label>DU — Username</label><input type="text" id="f-du-user" placeholder="Username"/></div>
+      <div class="ff"><label>DU — Password</label><input type="text" id="f-du-pass" placeholder="Password"/></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ S6: SETUP & PRE-LAUNCH ═══════════════ -->
+<div class="rh-section" id="s6">
+  <div class="rh-sec-hdr" onclick="togSec('s6')">
+    <div class="rh-sec-hdr-l">
+      <div class="sec-ico">🧹</div>
+      <div>
+        <div class="rh-sec-title">Setup &amp; Pre-Launch</div>
+        <div class="rh-sec-sub">Pre-launch preparation checklist</div>
+      </div>
+    </div>
+    <div class="rh-sec-hdr-r">
+      <span class="sec-cnt" id="c6">0/6</span>
+      <span class="chev">▼</span>
+    </div>
+  </div>
+  <div class="sec-mbar"><div class="sec-mfill" id="b6" style="width:0%"></div></div>
+  <div class="sec-body">
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="6"/><span class="cb-box"></span><span class="rh-cb-label">Deep Cleaning Completed</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="6"/><span class="cb-box"></span><span class="rh-cb-label">Beds &amp; Linen Set Up</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="6"/><span class="cb-box"></span><span class="rh-cb-label">Professional Photo Shoot Done</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="6"/><span class="cb-box"></span><span class="rh-cb-label">Listing Created (Airbnb / Booking.com)</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="6"/><span class="cb-box"></span><span class="rh-cb-label">Welcome Book / House Manual Ready</span></label></div>
+    <div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-s="6"/><span class="cb-box"></span><span class="rh-cb-label">Key / Smart Lock Handover Done</span></label></div>
+  </div>
+</div>
+
+<!-- ═══════════════ S7: LANDLORD DOCUMENTS ═══════════════ -->
+<div class="rh-section" id="s7">
+  <div class="rh-sec-hdr" onclick="togSec('s7')">
+    <div class="rh-sec-hdr-l">
+      <div class="sec-ico">📁</div>
+      <div>
+        <div class="rh-sec-title">Landlord Documents</div>
+        <div class="rh-sec-sub">Upload each to the designated Drive folder</div>
+      </div>
+    </div>
+    <div class="rh-sec-hdr-r">
+      <span class="sec-cnt" id="cdocs">0/6 uploaded</span>
+      <span class="chev">▼</span>
+    </div>
+  </div>
+  <div class="sec-body">
+    <div class="doc-wrap">
+      <div class="doc-item"><span class="doc-ico">✉️</span><span class="doc-name">Authorization Letter</span><span class="dtag pending" onclick="togDoc(this)">Pending</span></div>
+      <div class="doc-item"><span class="doc-ico">🪪</span><span class="doc-name">Landlord Passport Copy</span><span class="dtag pending" onclick="togDoc(this)">Pending</span></div>
+      <div class="doc-item"><span class="doc-ico">📄</span><span class="doc-name">NOC (No Objection Certificate)</span><span class="dtag pending" onclick="togDoc(this)">Pending</span></div>
+      <div class="doc-item"><span class="doc-ico">📝</span><span class="doc-name">Signed Management Contract</span><span class="dtag pending" onclick="togDoc(this)">Pending</span></div>
+      <div class="doc-item"><span class="doc-ico">🏛️</span><span class="doc-name">DTCM Certificate</span><span class="dtag pending" onclick="togDoc(this)">Pending</span></div>
+      <div class="doc-item"><span class="doc-ico">🏠</span><span class="doc-name">Title Deed</span><span class="dtag pending" onclick="togDoc(this)">Pending</span></div>
+    </div>
+    <a class="doc-drive" href="#" target="_blank">📂 Open Google Drive Folder →</a>
+  </div>
+</div>
+
+<!-- ═══════════════ S8: FINAL INSPECTION ═══════════════ -->
+<div class="rh-section" id="s8">
+  <div class="rh-sec-hdr" onclick="togSec('s8')">
+    <div class="rh-sec-hdr-l">
+      <div class="sec-ico">✅</div>
+      <div>
+        <div class="rh-sec-title">Final Inspection</div>
+        <div class="rh-sec-sub">Sign-off before going live</div>
+      </div>
+    </div>
+    <div class="rh-sec-hdr-r"><span class="chev">▼</span></div>
+  </div>
+  <div class="sec-body">
+    <div class="insp-body">
+      <div class="insp-lbl">Inspection Status</div>
+      <div class="insp-choices">
+        <button class="ibtn" id="ib-y" onclick="selInsp('y')">✔ Complete</button>
+        <button class="ibtn" id="ib-n" onclick="selInsp('n')">✖ Not Yet</button>
+      </div>
+      <div class="appr-row">
+        <label class="appr-label">Approved by</label>
+        <input class="appr-input" type="text" id="appr-input" placeholder="Name of approver"/>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SUBMIT -->
+<div class="rh-submit-wrap">
+  <button id="submit-btn" onclick="submitUnit()">Submit Unit Info</button>
+</div>
+
+</div><!-- /wrap -->
+
 <div id="success-overlay">
   <div class="rh-success-mark">&#10003;</div>
   <div class="rh-success-title">Submitted</div>
-  <div class="rh-success-sub">Unit <span class="rh-success-unit"></span> has been saved to Notion</div>
+  <div class="rh-success-sub">Unit <span class="rh-success-unit"></span> saved to Notion</div>
 </div>
-<script>var cbState={};var fieldMeta={};function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}function getSectionIcon(n){var l=n.toLowerCase();if(l.indexOf('detail')>=0||l.indexOf('unit')>=0)return 'ti-building';if(l.indexOf('key')>=0||l.indexOf('access')>=0)return 'ti-key';if(l.indexOf('util')>=0||l.indexOf('internet')>=0)return 'ti-plug';if(l.indexOf('photo')>=0||l.indexOf('listing')>=0)return 'ti-camera';if(l.indexOf('legal')>=0||l.indexOf('permit')>=0)return 'ti-certificate';return 'ti-list';}function updateProgress(){var boxes=document.querySelectorAll('.cb-input');var total=boxes.length;if(total===0)return;var checked=0;boxes.forEach(function(b){if(b.checked)checked++;});var pct=Math.round((checked/total)*100);document.getElementById('prog-bar').style.width=pct+'%';document.getElementById('prog-text').textContent=pct+'%';}function renderPage(data){var main=document.getElementById('main-content');if(!main)return;if(!data||!data.sections||!data.sections.length){main.innerHTML='<p style="color:#9B7D42;text-align:center;padding:40px;font-family:Georgia,serif;">No content found in Notion page.</p>';return;}var html='';data.sections.forEach(function(sec){var icon=getSectionIcon(sec.title);html+='<div class="rh-section"><div class="rh-section-header"><i class="ti '+esc(icon)+' rh-icon"></i><span>'+esc(sec.title)+'</span></div>';if(sec.fields&&sec.fields.length){sec.fields.forEach(function(f){fieldMeta[f.fieldId]={label:f.label};html+='<div class="rh-field-row"><label class="rh-label">'+esc(f.label)+'</label><input class="rh-input" type="text" data-field-id="'+esc(f.fieldId)+'" placeholder="'+esc(f.label)+'" value="'+esc(f.value||'')+'" autocomplete="off" /></div>';});}if(sec.items&&sec.items.length){sec.items.forEach(function(item){cbState[item.id]=item.checked;html+='<div class="rh-cb-row"><label class="rh-cb-wrap"><input type="checkbox" class="cb-input" data-id="'+esc(item.id)+'" '+(item.checked?'checked':'')+' /><span class="cb-box"></span><span class="rh-cb-label">'+esc(item.text)+'</span></label></div>';});}html+='</div>';});main.innerHTML=html;document.querySelectorAll('.cb-input').forEach(function(el){el.addEventListener('change',function(){var id=this.getAttribute('data-id');cbState[id]=this.checked;updateProgress();fetch('/api/checkbox',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({blockId:id,checked:this.checked})}).catch(function(){});});});document.querySelectorAll('.rh-input').forEach(function(el){el.addEventListener('blur',function(){var fid=this.getAttribute('data-field-id');var val=this.value;fetch('/api/field',{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({blockId:fid,value:val})}).catch(function(){});});});updateProgress();}function resetForm(unitNum){document.querySelectorAll('.cb-input').forEach(function(el){el.checked=false;cbState[el.getAttribute('data-id')]=false;});document.querySelectorAll('.rh-input').forEach(function(el){el.value='';});document.getElementById('unit-number').value='';updateProgress();var ov=document.getElementById('success-overlay');if(ov){ov.style.display='flex';var sp=ov.querySelector('.rh-success-unit');if(sp)sp.textContent=unitNum;setTimeout(function(){ov.style.display='none';},4000);}}function submitUnit(){var unitNum=document.getElementById('unit-number').value.trim();if(!unitNum){alert('Please enter a unit number.');return;}var fields={};document.querySelectorAll('.rh-input').forEach(function(el){var fid=el.getAttribute('data-field-id');if(fid)fields[fid]=el.value;});var btn=document.getElementById('submit-btn');if(btn){btn.disabled=true;btn.textContent='Submittingâ¦';}fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({unitNumber:unitNum,fields:fields,checkboxes:cbState})}).then(function(r){return r.json();}).then(function(){if(btn){btn.disabled=false;btn.textContent='Submit Unit Info';}resetForm(unitNum);}).catch(function(){if(btn){btn.disabled=false;btn.textContent='Submit Unit Info';}alert('Submission failed. Please try again.');});}function load(){var main=document.getElementById('main-content');if(main)main.innerHTML='<p style="color:#C9A860;text-align:center;padding:48px;font-family:Georgia,serif;letter-spacing:0.12em;">Loading from Notionâ¦</p>';fetch('/api/page').then(function(r){return r.json();}).then(function(data){renderPage(data);}).catch(function(){var main=document.getElementById('main-content');if(main)main.innerHTML='<p style="color:#c0392b;text-align:center;padding:40px;font-family:Georgia,serif;">Error loading. <a href="#" onclick="load();return false;" style="color:#BB9753;">Retry</a></p>';});}document.addEventListener('DOMContentLoaded',load);</script>
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── Section Toggle ───
+function togSec(id){document.getElementById(id).classList.toggle('closed')}
+
+// ─── Checkbox Progress ───
+var CB_SECS=['1','4','6'];
+function updateProgress(){
+  var totalDone=0,totalAll=0;
+  CB_SECS.forEach(function(id){
+    var cbs=[].slice.call(document.querySelectorAll('.cb-input[data-s="'+id+'"]'));
+    var done=cbs.filter(function(c){return c.checked}).length;
+    var all=cbs.length;
+    totalDone+=done;totalAll+=all;
+    var cnt=document.getElementById('c'+id);
+    var bar=document.getElementById('b'+id);
+    if(cnt){cnt.textContent=done+'/'+all;cnt.classList.toggle('done',done===all&&all>0)}
+    if(bar)bar.style.width=(all?done/all*100:0)+'%';
+  });
+  var uploaded=[].slice.call(document.querySelectorAll('.dtag.uploaded')).length;
+  var docCnt=document.getElementById('cdocs');
+  if(docCnt)docCnt.textContent=uploaded+'/6 uploaded';
+  var pct=totalAll?Math.round(totalDone/totalAll*100):0;
+  document.getElementById('prog-bar').style.width=pct+'%';
+  document.getElementById('prog-text').textContent=pct+'%';
+  document.getElementById('dn').textContent=totalDone;
+  document.getElementById('tt').textContent=totalAll;
+  document.getElementById('rm').textContent=totalAll-totalDone;
+}
+document.addEventListener('change',function(e){if(e.target.classList.contains('cb-input'))updateProgress()});
+
+// ─── Document Tracker ───
+function togDoc(el){
+  var isUp=el.classList.contains('uploaded');
+  el.classList.toggle('uploaded',!isUp);
+  el.classList.toggle('pending',isUp);
+  el.textContent=isUp?'Pending':'Uploaded ✓';
+  updateProgress();
+}
+
+// ─── Inspection ───
+function selInsp(v){
+  var iy=document.getElementById('ib-y');
+  var in_=document.getElementById('ib-n');
+  iy.classList.toggle('sel-y',v==='y');iy.classList.toggle('sel-n',false);
+  in_.classList.toggle('sel-n',v==='n');in_.classList.toggle('sel-y',false);
+}
+
+// ─── Save / Load ───
+function saveState(){
+  var cbState={};
+  [].slice.call(document.querySelectorAll('.cb-input')).forEach(function(cb,i){cbState[i]=cb.checked});
+  localStorage.setItem('rh_cb',JSON.stringify(cbState));
+  var fields={};
+  [].slice.call(document.querySelectorAll('.ff input,.ff textarea')).forEach(function(el){if(el.id)fields[el.id]=el.value});
+  localStorage.setItem('rh_fields',JSON.stringify(fields));
+  ['sofabed','balcony','smartlock'].forEach(function(name){
+    var r=document.querySelector('input[name="'+name+'"]:checked');
+    if(r)localStorage.setItem('rh_r_'+name,r.value);else localStorage.removeItem('rh_r_'+name);
+  });
+  localStorage.setItem('rh_unit',document.getElementById('unit-number').value);
+  var docs=[].slice.call(document.querySelectorAll('.dtag')).map(function(d){return d.classList.contains('uploaded')});
+  localStorage.setItem('rh_docs',JSON.stringify(docs));
+  var iy=document.getElementById('ib-y').classList.contains('sel-y');
+  var in_=document.getElementById('ib-n').classList.contains('sel-n');
+  localStorage.setItem('rh_insp',iy?'y':in_?'n':'');
+  localStorage.setItem('rh_appr',document.getElementById('appr-input').value);
+}
+
+function loadState(){
+  try{
+    var cbState=JSON.parse(localStorage.getItem('rh_cb')||'{}');
+    [].slice.call(document.querySelectorAll('.cb-input')).forEach(function(el,i){if(cbState[i]!==undefined)el.checked=cbState[i]});
+    var fields=JSON.parse(localStorage.getItem('rh_fields')||'{}');
+    Object.keys(fields).forEach(function(id){var el=document.getElementById(id);if(el)el.value=fields[id]});
+    ['sofabed','balcony','smartlock'].forEach(function(name){
+      var val=localStorage.getItem('rh_r_'+name);
+      if(val){var r=document.querySelector('input[name="'+name+'"][value="'+val+'"]');if(r)r.checked=true}
+    });
+    var unit=localStorage.getItem('rh_unit');if(unit)document.getElementById('unit-number').value=unit;
+    var docs=JSON.parse(localStorage.getItem('rh_docs')||'[]');
+    [].slice.call(document.querySelectorAll('.dtag')).forEach(function(d,i){if(docs[i]){d.classList.add('uploaded');d.classList.remove('pending');d.textContent='Uploaded ✓'}});
+    var insp=localStorage.getItem('rh_insp');if(insp)selInsp(insp);
+    var appr=localStorage.getItem('rh_appr');if(appr)document.getElementById('appr-input').value=appr;
+  }catch(e){}
+  updateProgress();
+}
+
+document.addEventListener('input',function(e){if(e.target.matches('.ff input,.ff textarea,#unit-number,.appr-input'))saveState()});
+document.addEventListener('change',function(e){if(e.target.matches('input[type=radio],.cb-input'))saveState()});
+
+// ─── Submit ───
+var FIELD_LABELS={
+  'f-mgmt-email':'Management Email','f-bld-notes':'Building Notes','f-bld-name':'Building Name',
+  'f-unit-floor':'Unit / Floor','f-address':'Address','f-maps':'Google Maps Link',
+  'f-beds':'Bedrooms','f-baths':'Bathrooms','f-sqm':'Unit Size (SQM)','f-bed-size':'Bed Sizes',
+  'f-kitchenware':'Kitchenware','f-guests':'Max Guests','f-lock-code':'Smart Lock Code',
+  'f-keys':'No. of Keys','f-cards':'Access Cards','f-entry-code':'Building Entry Code',
+  'f-pool-code':'Pool/Gym Code','f-parking':'Parking Number','f-parking-level':'Parking Level',
+  'f-wifi-name':'Wi-Fi Name','f-wifi-pass':'Wi-Fi Password','f-dewa-acc':'DEWA Account',
+  'f-dewa-user':'DEWA Username','f-dewa-pass':'DEWA Password','f-du-acc':'DU Account',
+  'f-du-due':'DU Due Date','f-du-user':'DU Username','f-du-pass':'DU Password'
+};
+var CB_LABELS={
+  '1':['DTCM Registration','Furnishing per DTCM Standards','DEWA Setup Complete','DU Setup Complete','Property Insurance Active','Building NOC Obtained'],
+  '4':['Sofa','Dining Table','Dining Chairs','Coffee Table','Television','Curtains/Blinds','Beds + Mattresses','Bedside Tables','Bedside Lamps','Wardrobe','Blackout Curtains','Refrigerator','Stove/Oven','Microwave','Cookware','Cutlery & Crockery','Kitchen Utensils','Shower/Bathtub','Mirror','Waste Bin','Towel Rail','Wi-Fi Router','AC Working','Iron & Board','Fire Safety'],
+  '6':['Deep Cleaning','Beds & Linen Setup','Photo Shoot Done','Listing Created','Welcome Book Ready','Key Handover Done']
+};
+
+function submitUnit(){
+  var unitNum=document.getElementById('unit-number').value.trim();
+  if(!unitNum){showToast('Please enter a unit number first');return}
+
+  var sections=[];
+  var reg={title:'Registration & Compliance',items:[]};
+  var cbs1=[].slice.call(document.querySelectorAll('.cb-input[data-s="1"]'));
+  cbs1.forEach(function(cb,i){reg.items.push({label:CB_LABELS['1'][i]||('Item '+(i+1)),checked:cb.checked})});
+  sections.push(reg);
+
+  var details={title:'Unit Details',fields:[],radios:[]};
+  ['f-mgmt-email','f-bld-notes','f-bld-name','f-unit-floor','f-address','f-maps','f-beds','f-baths','f-sqm','f-bed-size','f-kitchenware','f-guests'].forEach(function(id){
+    var el=document.getElementById(id);if(el&&el.value)details.fields.push({label:FIELD_LABELS[id]||id,value:el.value});
+  });
+  ['sofabed','balcony'].forEach(function(name){
+    var r=document.querySelector('input[name="'+name+'"]:checked');
+    if(r)details.radios.push({label:name==='sofabed'?'Sofa Bed?':'Balcony?',value:r.value});
+  });
+  sections.push(details);
+
+  var access={title:'Key & Access',fields:[],radios:[]};
+  ['f-lock-code','f-keys','f-cards','f-entry-code','f-pool-code','f-parking','f-parking-level'].forEach(function(id){
+    var el=document.getElementById(id);if(el&&el.value)access.fields.push({label:FIELD_LABELS[id]||id,value:el.value});
+  });
+  var sl=document.querySelector('input[name="smartlock"]:checked');
+  if(sl)access.radios.push({label:'Smart Lock?',value:sl.value});
+  sections.push(access);
+
+  var furn={title:'Furnishing Checklist',items:[]};
+  var cbs4=[].slice.call(document.querySelectorAll('.cb-input[data-s="4"]'));
+  cbs4.forEach(function(cb,i){furn.items.push({label:CB_LABELS['4'][i]||('Item '+(i+1)),checked:cb.checked})});
+  sections.push(furn);
+
+  var utils={title:'Utilities & Internet',fields:[]};
+  ['f-wifi-name','f-wifi-pass','f-dewa-acc','f-dewa-user','f-dewa-pass','f-du-acc','f-du-due','f-du-user','f-du-pass'].forEach(function(id){
+    var el=document.getElementById(id);if(el&&el.value)utils.fields.push({label:FIELD_LABELS[id]||id,value:el.value});
+  });
+  sections.push(utils);
+
+  var setup={title:'Setup & Pre-Launch',items:[]};
+  var cbs6=[].slice.call(document.querySelectorAll('.cb-input[data-s="6"]'));
+  cbs6.forEach(function(cb,i){setup.items.push({label:CB_LABELS['6'][i]||('Item '+(i+1)),checked:cb.checked})});
+  sections.push(setup);
+
+  var docItems=[];
+  [].slice.call(document.querySelectorAll('.doc-item')).forEach(function(di){
+    docItems.push({name:di.querySelector('.doc-name').textContent,uploaded:di.querySelector('.dtag').classList.contains('uploaded')});
+  });
+
+  var inspStatus=document.getElementById('ib-y').classList.contains('sel-y')?'Complete':document.getElementById('ib-n').classList.contains('sel-n')?'Not Yet':'Pending';
+  var approver=document.getElementById('appr-input').value;
+  var btn=document.getElementById('submit-btn');
+  btn.disabled=true;btn.textContent='Submitting…';
+
+  fetch('/api/submit',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({unitNumber:unitNum,sections:sections,documents:docItems,inspection:{status:inspStatus,approver:approver}})})
+  .then(function(r){return r.json()})
+  .then(function(){
+    btn.disabled=false;btn.textContent='Submit Unit Info';
+    var ov=document.getElementById('success-overlay');ov.style.display='flex';
+    var sp=ov.querySelector('.rh-success-unit');if(sp)sp.textContent=unitNum;
+    setTimeout(function(){ov.style.display='none'},4000);
+    [].slice.call(document.querySelectorAll('.cb-input')).forEach(function(el){el.checked=false});
+    [].slice.call(document.querySelectorAll('.ff input,.ff textarea')).forEach(function(el){el.value=''});
+    [].slice.call(document.querySelectorAll('input[type=radio]')).forEach(function(r){r.checked=false});
+    [].slice.call(document.querySelectorAll('.dtag')).forEach(function(d){d.classList.remove('uploaded');d.classList.add('pending');d.textContent='Pending'});
+    document.getElementById('unit-number').value='';document.getElementById('appr-input').value='';
+    document.getElementById('ib-y').classList.remove('sel-y');document.getElementById('ib-n').classList.remove('sel-n');
+    localStorage.clear();updateProgress();
+  })
+  .catch(function(){btn.disabled=false;btn.textContent='Submit Unit Info';showToast('Submission failed. Please try again.');});
+}
+
+// ─── Toast ───
+function showToast(msg){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show')},2500);
+}
+
+loadState();
+</script>
 </body>
 </html>
