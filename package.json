@@ -1,12 +1,20 @@
 {
-  "name": "rove-haven",
+  "name": "rove-haven-checklists",
   "version": "1.0.0",
+  "description": "Rove Haven unit onboarding checklists — Railway deployment, Notion backend",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "dependencies": {
-    "express": "^4.18.0",
-    "node-fetch": "^2.6.9"
+    "@notionhq/client": "^2.2.15",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
   }
 }
